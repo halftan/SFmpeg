@@ -117,7 +117,7 @@ extension AVFilter: CustomStringConvertible {
 // MARK: - AVFilter.Flag
 
 extension AVFilter {
-  public struct Flag: OptionSet {
+  public struct Flag: OptionSet, Sendable {
     /// The number of the filter inputs is not determined just by `AVFilter.inputs`.
     /// The filter might add additional inputs during initialization depending on the
     /// options supplied to it.
@@ -302,7 +302,7 @@ public final class AVFilterContext {
 }
 
 extension AVFilterContext: AVClassSupport, AVOptionSupport {
-  public static let `class` = AVClass(native: avfilter_get_class())
+  nonisolated(unsafe) public static let `class` = AVClass(native: avfilter_get_class())
 
   public func withUnsafeObjectPointer<T>(_ body: (UnsafeMutableRawPointer) throws -> T) rethrows -> T {
     try body(native)
@@ -311,7 +311,7 @@ extension AVFilterContext: AVClassSupport, AVOptionSupport {
 
 // MARK: - AVBufferSourceFlag
 
-public struct AVBufferSourceFlag: OptionSet {
+public struct AVBufferSourceFlag: OptionSet, Sendable {
   /// Do not check for format changes.
   public static let noCheckFormat = AVBufferSourceFlag(
     rawValue: Int32(AV_BUFFERSRC_FLAG_NO_CHECK_FORMAT))
@@ -364,7 +364,7 @@ extension AVFilterContext {
 
 // MARK: - AVBufferSinkFlag
 
-public struct AVBufferSinkFlag: OptionSet {
+public struct AVBufferSinkFlag: OptionSet, Sendable {
   /// Tell av_buffersink_get_buffer_ref() to read video/samples buffer
   /// reference, but not remove it from the buffer. This is useful if you
   /// need only to read a video/samples buffer, without to fetch it.

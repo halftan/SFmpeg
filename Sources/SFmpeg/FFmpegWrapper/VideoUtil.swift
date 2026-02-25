@@ -94,7 +94,7 @@ public struct AVPixelFormatDescriptor {
   ///   otherwise 0 is luma, 1 is chroma-U and 2 is chroma-V.
   ///
   /// If present, the Alpha channel is always the last component.
-  public var componentDescriptors: [SwiftFFmpeg.AVComponentDescriptor] {
+  public var componentDescriptors: [AVComponentDescriptor] {
     [native.pointee.comp.0, native.pointee.comp.1, native.pointee.comp.2, native.pointee.comp.3]
   }
 
@@ -130,7 +130,7 @@ public struct AVPixelFormatDescriptor {
   }
 }
 
-public struct AVPixelFormatFlags: OptionSet {
+public struct AVPixelFormatFlags: OptionSet, Sendable {
   public let rawValue: UInt64
 
   public init(rawValue: UInt64) {

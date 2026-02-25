@@ -169,7 +169,7 @@ public final class SwrContext {
 }
 
 extension SwrContext: AVClassSupport, AVOptionSupport {
-  public static let `class` = AVClass(native: swr_get_class())
+  nonisolated(unsafe) public static let `class` = AVClass(native: swr_get_class())
 
   public func withUnsafeObjectPointer<T>(_ body: (UnsafeMutableRawPointer) throws -> T) rethrows -> T {
     try body(UnsafeMutableRawPointer(native))

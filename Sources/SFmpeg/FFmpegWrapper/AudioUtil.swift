@@ -5,67 +5,7 @@
 //  Created by sunlubo on 2018/8/2.
 //
 
-import CFFmpeg.AVUtil
-@_exported
-import struct CFFmpeg.AVUtil.AVChannelLayout
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutMono
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutStereo
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout2Point1
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout2_1
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutSurround
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout3Point1
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout4Point0
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout4Point1
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout2_2
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutQuad
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout5Point0
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout5Point1
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout5Point0Back
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout5Point1Back
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout6Point0
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout6Point0Front
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutHexagonal
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout6Point1
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout6Point1Back
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout6Point1Front
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout7Point0
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout7Point0Front
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout7Point1
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout7Point1Wide
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout7Point1WideBack
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutOctagonal
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutHexadecagonal
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayoutStereoDownmix
-@_exported
-import let CFFmpeg.AVUtil.AVChannelLayout22Point2
+import CFFmpeg
 
 extension AVChannelLayout {
   /// Initialize a channel layout from a given string description.

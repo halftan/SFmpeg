@@ -1,32 +1,51 @@
-// swift-tools-version:5.10
+// swift-tools-version: 6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-  name: "SwiftFFmpeg",
-  products: [
-    .library(
-      name: "SwiftFFmpeg",
-      targets: ["SwiftFFmpeg"]
-    )
-  ],
-  targets: [
-    .systemLibrary(
-      name: "CFFmpeg",
-      pkgConfig: "libavformat"
-    ),
-    .target(
-      name: "SwiftFFmpeg",
-      dependencies: ["CFFmpeg"]
-    ),
-    .executableTarget(
-      name: "Examples",
-      dependencies: ["SwiftFFmpeg"]
-    ),
-    .testTarget(
-      name: "Tests",
-      dependencies: ["SwiftFFmpeg"]
-    ),
-  ]
+    name: "SFmpeg",
+    platforms: [
+        .macOS(.v26),
+        .visionOS(.v26),
+        .iOS(.v26),
+        .tvOS(.v26)
+    ],
+    products: [
+        .library(
+            name: "SFmpeg",
+            targets: ["SFmpeg"]
+        ),
+    ],
+    targets: [
+        // 1. Binary target for the xcframework
+        .binaryTarget(
+            name: "FFmpeg",
+            path: "Frameworks/FFmpeg.xcframework.zip"
+        ),
+
+        // 2. C headers
+        .target(
+            name: "CFFmpeg",
+            dependencies: ["FFmpeg"],
+            cSettings: [
+                .headerSearchPath("include"),
+                .define("__STDC_CONSTANT_MACROS"),
+            ],
+            linkerSettings: [
+                .linkedFramework("FFmpeg")
+            ]
+        ),
+
+        // 3. the main Swift module
+        .target(
+            name: "SFmpeg",
+            dependencies: ["CFFmpeg"]
+        ),
+
+        .testTarget(
+            name: "SFmpegTests",
+            dependencies: ["SFmpeg"]
+        ),
+    ]
 )
